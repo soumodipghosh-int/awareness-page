@@ -1,110 +1,140 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Security Awareness - Prime Infoserv</title>
-
+  <link rel="icon" href="favicon.ico" sizes="any">
   <style>
     * {
       box-sizing: border-box;
     }
 
+    :root {
+      --brand-blue: #085191;
+      --brand-red: #e43535;
+      --ink: #222b38;
+      --muted: #626c78;
+    }
+
     body {
       margin: 0;
+      min-height: 100vh;
       font-family: Arial, Helvetica, sans-serif;
-      background: #f4f6f8;
-      color: #222;
+      background: linear-gradient(135deg, #eff6fb 0%, #f8fafc 54%, #fff5f3 100%);
+      color: var(--ink);
     }
 
     .header {
-      background: #1f2937;
-      padding: 20px 30px;
+      padding: 16px 30px;
       color: #ffffff;
+      background: linear-gradient(108deg, var(--brand-blue) 0%, #176b97 52%, var(--brand-red) 100%);
     }
 
-    .brand {
-      font-size: 22px;
+    .header-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .brand img {
+      display: block;
+      width: 144px;
+      height: 60px;
+      object-fit: contain;
+      padding: 4px 8px;
+      background: #ffffff;
+      border-radius: 4px;
+    }
+
+    .brand-label {
+      font-size: 15px;
       font-weight: 700;
     }
 
     .container {
       max-width: 760px;
-      margin: 55px auto;
+      margin: 48px auto 56px;
       padding: 0 20px;
     }
 
     .card {
+      position: relative;
+      overflow: hidden;
+      padding: 42px 48px;
+      border-radius: 8px;
       background: #ffffff;
-      border-radius: 12px;
-      padding: 45px;
-      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 8px 30px rgba(20, 48, 70, 0.1);
       text-align: center;
     }
 
-    .icon {
-      width: 76px;
-      height: 76px;
-      margin: 0 auto 25px;
-      border-radius: 50%;
-      background: #fff1f2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 38px;
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 4px;
+      background: linear-gradient(90deg, var(--brand-blue), #176b97 52%, var(--brand-red));
+    }
+
+    .eyebrow {
+      margin: 2px 0 12px;
+      color: var(--brand-blue);
+      font-size: 13px;
+      font-weight: 700;
     }
 
     h1 {
       margin: 0 0 15px;
+      color: #c52c32;
       font-size: 32px;
-      color: #b91c1c;
     }
 
     .subtitle {
-      font-size: 18px;
-      color: #444;
-      line-height: 1.6;
       margin-bottom: 35px;
+      color: #414c59;
+      font-size: 18px;
+      line-height: 1.6;
     }
 
     .alert {
-      text-align: left;
-      background: #fff7ed;
-      border-left: 5px solid #f97316;
-      padding: 20px;
       margin: 25px 0;
-      border-radius: 5px;
+      padding: 20px;
+      border-left: 4px solid var(--brand-red);
+      border-radius: 4px;
+      background: #fff6f4;
+      text-align: left;
     }
 
     .alert strong {
       display: block;
       margin-bottom: 8px;
-      color: #9a3412;
+      color: #a9272e;
     }
 
     .steps {
-      text-align: left;
       margin-top: 30px;
+      text-align: left;
     }
 
     .step {
       display: flex;
+      align-items: flex-start;
       gap: 15px;
       margin: 20px 0;
-      align-items: flex-start;
     }
 
     .number {
-      min-width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: #1f2937;
-      color: white;
       display: flex;
+      flex: 0 0 32px;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--brand-blue);
+      color: #ffffff;
+      font-weight: 700;
     }
 
     .step-content strong {
@@ -114,111 +144,150 @@
     }
 
     .step-content span {
-      color: #666;
-      line-height: 1.5;
+      color: var(--muted);
       font-size: 14px;
+      line-height: 1.5;
     }
 
     .footer {
       margin-top: 35px;
+      color: var(--muted);
       font-size: 13px;
-      color: #777;
       line-height: 1.5;
     }
 
     @media (max-width: 600px) {
+      .header {
+        padding: 14px 18px;
+      }
+
+      .header-inner {
+        gap: 13px;
+      }
+
+      .brand img {
+        width: 126px;
+        height: 52px;
+      }
+
+      .brand-label {
+        font-size: 14px;
+      }
+
+      .container {
+        margin: 30px auto 40px;
+        padding: 0 14px;
+      }
+
       .card {
-        padding: 30px 22px;
+        padding: 34px 22px 30px;
       }
 
       h1 {
         font-size: 27px;
       }
+
+      .subtitle {
+        font-size: 16px;
+      }
+
+      .step {
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .header {
+        padding-right: 14px;
+        padding-left: 14px;
+      }
+
+      .brand img {
+        width: 112px;
+        height: 48px;
+      }
+
+      .brand-label {
+        font-size: 13px;
+      }
+
+      .card {
+        padding-right: 18px;
+        padding-left: 18px;
+      }
     }
   </style>
-
 </head>
-
 <body>
-
-  <div class="header">
-    <div class="brand">
-      Prime Infoserv
-    </div>
-  </div>
-
-  <div class="container">
-
-```
-<div class="card">
-
-  <div class="icon">
-    <img src="prime-logotype.png" alt="Prime Infoserv" style="width:100%;height:100%;object-fit:contain">
-  </div>
-
-  <h1>You Have Been Phished</h1>
-
-  <div class="subtitle">
-    This was an authorized phishing-awareness exercise
-    conducted by <strong>Prime Infoserv</strong>.
-  </div>
-
-  <div class="alert">
-    <strong>Don't panic.</strong>
-    No action is being taken against you. This exercise is designed
-    to help you recognize suspicious emails and protect your account
-    from real-world phishing attacks.
-  </div>
-
-  <div class="steps">
-
-    <div class="step">
-      <div class="number">1</div>
-      <div class="step-content">
-        <strong>Report the email to your IT / Security Team</strong>
-        <span>
-          Inform your organization's IT or security administrator
-          that you interacted with the simulated phishing message.
-        </span>
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <img src="prime-logotype.png" alt="Prime Infoserv">
       </div>
+      <div class="brand-label">Security Awareness</div>
     </div>
+  </header>
 
-    <div class="step">
-      <div class="number">2</div>
-      <div class="step-content">
-        <strong>Reset your password if you entered credentials</strong>
-        <span>
-          If you entered your password or other credentials on the
-          simulated page, change that password immediately through
-          your organization's official account-management process.
-        </span>
+  <main class="container">
+    <section class="card" aria-labelledby="page-title">
+      <div class="eyebrow">Authorized awareness exercise</div>
+      <h1 id="page-title">You Have Been Phished</h1>
+
+      <div class="subtitle">
+        This was an authorized phishing-awareness exercise
+        conducted by <strong>Prime Infoserv</strong>.
       </div>
-    </div>
 
-    <div class="step">
-      <div class="number">3</div>
-      <div class="step-content">
-        <strong>Be cautious with unexpected emails</strong>
-        <span>
-          Check the sender, destination URL, unusual requests,
-          urgency, spelling, and unexpected offers before clicking.
-        </span>
+      <div class="alert">
+        <strong>Don't panic.</strong>
+        No action is being taken against you. This exercise is designed
+        to help you recognize suspicious emails and protect your account
+        from real-world phishing attacks.
       </div>
-    </div>
 
-  </div>
+      <div class="steps">
+        <div class="step">
+          <div class="number">1</div>
+          <div class="step-content">
+            <strong>Report the email to your IT / Security Team</strong>
+            <span>
+              Inform your organization's IT or security administrator
+              that you interacted with the simulated phishing message.
+            </span>
+          </div>
+        </div>
 
-  <div class="footer">
-    This awareness exercise was conducted by Prime Infoserv
-    for authorized security-awareness purposes.
-    <br><br>
-    Stay alert. Think before you click.
-  </div>
+        <div class="step">
+          <div class="number">2</div>
+          <div class="step-content">
+            <strong>Reset your password if you entered credentials</strong>
+            <span>
+              If you entered your password or other credentials on the
+              simulated page, change that password immediately through
+              your organization's official account-management process.
+            </span>
+          </div>
+        </div>
 
-</div>
-```
+        <div class="step">
+          <div class="number">3</div>
+          <div class="step-content">
+            <strong>Be cautious with unexpected emails</strong>
+            <span>
+              Check the sender, destination URL, unusual requests,
+              urgency, spelling, and unexpected offers before clicking.
+            </span>
+          </div>
+        </div>
+      </div>
 
-  </div>
-
+      <div class="footer">
+        This awareness exercise was conducted by Prime Infoserv
+        for authorized security-awareness purposes.
+        <br><br>
+        Stay alert. Think before you click.
+      </div>
+    </section>
+  </main>
 </body>
 </html>
